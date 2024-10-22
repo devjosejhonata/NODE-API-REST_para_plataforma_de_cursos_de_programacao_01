@@ -15,3 +15,7 @@
 - Nodemon instalado para rodar o projeto no automatico. Para executar o projeto: npm run dev.
 
 - Versão do sequelize utilizado: npm install sequelize@6.32.1; Instalei também o: sequelize-cli@6.6.1 e o sqlite3@5.1.6 
+
+- Comando utilizado para fazer as migrações dos dados para o banco: npx sequelize-cli db:migrate
+
+- Para visualizar as tabelas do banco, tenho instalado no pc o DB Browser for SQLite e o Beekeeper Studio, e tambem a extensao no vscode SQLite Viewer.
