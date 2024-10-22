@@ -13,3 +13,5 @@
 - O projeto seguirá o padrão de arquitetura MVC (Model-View-Controller), para garantir uma organização clara e separação de responsabilidades no código.
 
 - Nodemon instalado para rodar o projeto no automatico. Para executar o projeto: npm run dev.
+
+- Versão do sequelize utilizado: npm install sequelize@6.32.1; Instalei também o: sequelize-cli@6.6.1 e o sqlite3@5.1.6 

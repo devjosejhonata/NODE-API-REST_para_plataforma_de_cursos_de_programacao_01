@@ -1,0 +1,16 @@
+/*
+- Este arquivo é usado para configurar os caminhos para o sequelize-cli; 
+- O sequelize-cli é uma ferramenta de linha de comando que pode ser usada 
+para criar, migrar e deletar tabelas em um banco de dados SQL;
+- O sequelize-cli usa o arquivo .sequelizerc para saber onde estão os arquivos;
+*/
+
+const path = require('path'); // Importa o módulo path do Node.js
+
+// Exporta um objeto com os caminhos dos arquivos do sequelize-cli
+module.exports = {
+  'config': path.resolve('./src/config', 'config.json'),
+  'models-path': path.resolve('./src/models'),
+  'seeders-path': path.resolve('./src/seeders'),
+  'migrations-path': path.resolve('./src/migrations'),
+}
