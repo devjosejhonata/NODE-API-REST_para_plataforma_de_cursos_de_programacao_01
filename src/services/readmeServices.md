@@ -1,0 +1,1 @@
+A pasta services intermediará a comunicação. Essa camada intermediária é um padrão que chamamos de services (serviço), e será responsável por pegar o modelo, aplicar regras que precisemos implementar no nosso projeto, e interagir com o controlador. A camada de services será responsável por se conectar com o modelo.

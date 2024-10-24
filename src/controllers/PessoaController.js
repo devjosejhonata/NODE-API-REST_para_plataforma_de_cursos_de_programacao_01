@@ -3,8 +3,7 @@
 operações relacionadas à entidade Pessoa, como buscar todas as pessoas.
 */
 
-// Executando todo o código dentro de models/index.js
-const database = require('../models');
+
 
 class PessoaController {
   // Método estático para pegar todas as pessoas
