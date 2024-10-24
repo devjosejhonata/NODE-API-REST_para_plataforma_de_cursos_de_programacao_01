@@ -1,14 +1,16 @@
 # Controllers
 
-A pasta **controllers** contém todos os arquivos que gerenciam a lógica de negócios da aplicação. Cada controlador é responsável por receber as requisições dos clientes, processar os dados necessários e retornar as respostas apropriadas. Os controladores interagem diretamente com as rotas e realizam operações comuns, como CRUD (Create, Read, Update, Delete), ao interagir com os modelos de dados da aplicação.
+A pasta controllers contém todos os arquivos que gerenciam a lógica de negócios da aplicação. Cada controlador é responsável por receber as requisições dos clientes, processar os dados necessários e retornar as respostas apropriadas. Os controladores interagem diretamente com as rotas e realizam operações comuns, como CRUD (Create, Read, Update, Delete), ao interagir com os serviços (services) da aplicação.
 
 ## Estrutura e Funcionalidade
 
-Os controladores são a camada intermediária entre as rotas e os modelos, garantindo que a lógica de manipulação de dados esteja separada da definição das rotas. Essa separação facilita a manutenção e a escalabilidade da aplicação.
+Os controladores são a camada intermediária entre as rotas e os serviços, garantindo que a lógica de manipulação de dados esteja separada da definição das rotas. Essa separação facilita a manutenção e a escalabilidade da aplicação.
 
 ### Arquivos
 
-- **PessoaController.js**: Gerencia as operações relacionadas à entidade **Pessoa**, incluindo funcionalidades como listagem, criação, atualização e exclusão de registros de pessoas.
+- Controller.js: Define um controlador genérico que fornece métodos comuns como pegaTodos. Este arquivo serve como base para outros controladores, garantindo uma implementação consistente de operações CRUD.
+
+- PessoaController.js: Gerencia as operações relacionadas à entidade Pessoa, como listar todas as pessoas, utilizando os métodos herdados de Controller.js e o serviço PessoaServices.js.
 
 OS DEMAIS CONTROLLERS AINDA SERÃO CRIADOS: 
 
@@ -19,6 +21,7 @@ OS DEMAIS CONTROLLERS AINDA SERÃO CRIADOS:
 ## Observações
 
 - Os controladores devem seguir as boas práticas de codificação, incluindo tratamento de erros e validação de dados para garantir a robustez da aplicação.
+
 - É recomendável adicionar comentários nos métodos dos controladores para explicar a lógica de cada operação, facilitando a compreensão para outros desenvolvedores.
 
 Com essa estrutura bem definida, a manutenção e a evolução da aplicação se tornam mais eficientes e organizadas.

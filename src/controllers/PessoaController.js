@@ -1,27 +1,19 @@
 /*
-- Dentro desse arquivo conterá o controller que será responsável por gerenciar as 
-operações relacionadas à entidade Pessoa, como buscar todas as pessoas.
+- Este arquivo define a classe PessoaController, responsável por gerenciar as operações relacionadas à entidade Pessoa.
+- O controller interage com os serviços (PessoaServices) para realizar operações de busca, criação, atualização, etc.
 */
 
+const Controller = require('./Controller.js'); // Importando a classe base Controller
+const PessoaServices = require('../services/PessoaServices.js'); // Importando o serviço específico para Pessoa
 
+const pessoaServices = new PessoaServices(); // Criando uma instância do serviço de Pessoa
 
-class PessoaController {
-  // Método estático para pegar todas as pessoas
-  static async pegaTodas(req, res) {
-    try {
+class PessoaController extends Controller {
 
-        // Buscando todas as pessoas no banco de dados
-        const listaDePessoas = await database.Pessoa.findAll();
-
-        // Retornando a lista de pessoas com status 200 (OK)
-        return res.status(200).json(listaDePessoas);
-        
-    } catch (error) {
-        
-        // Retornando uma mensagem de erro com status 500 (Erro interno do servidor)
-        return res.status(500).json({ mensagem: 'Erro ao buscar dados' });
+    // O construtor chama a classe pai (Controller) passando o serviço específico de Pessoa
+    constructor() {
+        super(pessoaServices);
     }
-  }
 }
 
-module.exports = PessoaController;
+module.exports = PessoaController; // Exportando a classe PessoaController

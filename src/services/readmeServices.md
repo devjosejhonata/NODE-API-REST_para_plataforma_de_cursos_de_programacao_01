@@ -1,1 +1,19 @@
-A pasta services intermediará a comunicação. Essa camada intermediária é um padrão que chamamos de services (serviço), e será responsável por pegar o modelo, aplicar regras que precisemos implementar no nosso projeto, e interagir com o controlador. A camada de services será responsável por se conectar com o modelo.
+## Services
+
+A pasta services intermediará a comunicação entre os controladores e os modelos da aplicação. Essa camada intermediária, chamada de services (serviços), é responsável por aplicar as regras de negócio necessárias e realizar a interação com os modelos, garantindo uma organização modular e clara.
+
+## Estrutura e Funcionalidade
+
+A camada de serviços abstrai a lógica de manipulação dos dados, separando-a das rotas e controladores. Dessa forma, o controlador não precisa lidar diretamente com os modelos, facilitando a aplicação de regras de negócio e a manutenção do código.
+
+## Arquivos 
+
+- Service.js: Define uma classe genérica de serviço, responsável por métodos comuns como buscar todos os registros de uma entidade. Essa classe genérica serve como base para serviços específicos de outras entidades.
+
+- PessoaServices.js: Extende a classe Service.js e é responsável por gerenciar as operações relacionadas à entidade Pessoa. Herda métodos genéricos de Service.js e pode ser estendida para incluir regras de negócio específicas para pessoas.
+
+## Observações
+
+Cada serviço deve ser responsável por uma entidade da aplicação, centralizando as regras de negócio e as operações relacionadas a essa entidade.
+
+A utilização de uma classe genérica (Service.js) permite que serviços compartilhem lógica comum, facilitando a criação e manutenção de novos serviços no futuro.
