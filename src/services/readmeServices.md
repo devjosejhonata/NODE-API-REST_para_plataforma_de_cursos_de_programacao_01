@@ -8,7 +8,7 @@ A camada de serviços abstrai a lógica de manipulação dos dados, separando-a 
 
 ## Arquivos 
 
-- Service.js: Define uma classe genérica de serviço, responsável por métodos comuns como buscar todos os registros de uma entidade. Essa classe genérica serve como base para serviços específicos de outras entidades.
+- Service.js: Define uma classe genérica de serviço que implementa métodos comuns, como pegaTodosOsRegistros, pegaUmRegistroPorId, criaRegistro, atualizaRegistro, e excluiRegistro. Essa classe genérica é utilizada como base para os serviços de diferentes entidades, centralizando a lógica comum de manipulação de dados e garantindo a consistência das operações CRUD.
 
 - PessoaServices.js: Extende a classe Service.js e é responsável por gerenciar as operações relacionadas à entidade Pessoa. Herda métodos genéricos de Service.js e pode ser estendida para incluir regras de negócio específicas para pessoas.
 

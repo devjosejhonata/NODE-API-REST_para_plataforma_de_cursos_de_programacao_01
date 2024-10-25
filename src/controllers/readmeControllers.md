@@ -8,7 +8,7 @@ Os controladores são a camada intermediária entre as rotas e os serviços, gar
 
 ### Arquivos
 
-- Controller.js: Define um controlador genérico que fornece métodos comuns como pegaTodos. Este arquivo serve como base para outros controladores, garantindo uma implementação consistente de operações CRUD.
+- Controller.js: Define um controlador genérico que fornece métodos comuns, como pegaTodos, pegaUmPorId, criaNovo, atualiza, e exclui. Esses métodos são base para a implementação de operações CRUD (Create, Read, Update, Delete) em outras classes de controladores específicos, como PessoaController. Este arquivo serve como uma estrutura padronizada, garantindo consistência e reutilização de código entre diferentes controladores da aplicação.
 
 - PessoaController.js: Gerencia as operações relacionadas à entidade Pessoa, como listar todas as pessoas, utilizando os métodos herdados de Controller.js e o serviço PessoaServices.js.
 
