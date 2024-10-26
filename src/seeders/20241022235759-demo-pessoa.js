@@ -10,7 +10,7 @@ module.exports = {
   
      // Inserção de dados na tabela pessoas
      // O método queryInterface.bulkInsert() é utilizado para inserir dados em massa na tabela pessoas
-     await queryInterface.bulkInsert('pessoas', //
+     await queryInterface.bulkInsert('pessoas', 
       [
         {
           nome: 'Solange Estudante',
