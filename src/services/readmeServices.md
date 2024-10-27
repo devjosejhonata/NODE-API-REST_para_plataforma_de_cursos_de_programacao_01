@@ -12,6 +12,13 @@ A camada de serviços abstrai a lógica de manipulação dos dados, separando-a 
 
 - PessoaServices.js: Extende a classe Service.js e é responsável por gerenciar as operações relacionadas à entidade Pessoa. Herda métodos genéricos de Service.js e pode ser estendida para incluir regras de negócio específicas para pessoas.
 
+- CategoriaServices.js: Extende a classe Service.js e gerencia as operações relacionadas à entidade Categoria. Utiliza métodos herdados de Service.js e pode incluir regras de negócio específicas para as categorias, como validações de título ou manipulação de dados associada.
+
+- CursoServices.js: Extende a classe Service.js e é responsável pelas operações da entidade Curso. Herdando métodos da classe genérica, pode adicionar funcionalidades específicas para cursos, como validações de data de início e associações com outras entidades como docentes e categorias.
+
+- MatriculaServices.js: Extende a classe Service.js e controla as operações relacionadas à entidade Matricula. Herda métodos genéricos e pode ser adaptado para implementar regras de negócio específicas de matrícula, como verificação de status ou relacionamento com outras entidades.
+
+
 ## Observações
 
 Cada serviço deve ser responsável por uma entidade da aplicação, centralizando as regras de negócio e as operações relacionadas a essa entidade.

@@ -12,11 +12,11 @@ Os controladores são a camada intermediária entre as rotas e os serviços, gar
 
 - PessoaController.js: Gerencia as operações relacionadas à entidade Pessoa, como listar todas as pessoas, utilizando os métodos herdados de Controller.js e o serviço PessoaServices.js.
 
-OS DEMAIS CONTROLLERS AINDA SERÃO CRIADOS: 
+- CategoriaController.js: Responsável pelas operações de CRUD para a entidade Categoria. Este controlador utiliza o serviço CategoriaServices.js para manipular dados e aplicar regras de negócio específicas para categorias.
 
-- **CursoController.js**: Responsável por manipular as operações referentes à entidade **Curso**, abrangendo a gestão de informações sobre os cursos disponíveis.
-- **MatriculaController.js**: Controla as operações relacionadas à **Matricula**, permitindo o gerenciamento de inscrições de pessoas em cursos.
-- **CategoriaController.js**: Administra as funcionalidades ligadas às **Categorias**, possibilitando a organização dos cursos em diferentes segmentos.
+- CursoController.js: Gerencia as operações relacionadas à entidade Curso, usando métodos herdados de Controller.js e o serviço CursoServices.js para realizar operações como listagem, criação e atualização de cursos.
+
+- MatriculaController.js: Gerencia as operações relacionadas à entidade Matricula, aplicando métodos comuns de CRUD (fornecidos pela classe Controller.js) e utilizando o serviço MatriculaServices.js para manipulação dos dados de matrícula.
 
 ## Observações
 
