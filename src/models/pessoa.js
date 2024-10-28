@@ -15,13 +15,20 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Pessoa extends Model {
     static associate(models) {
-      // define association here
-      Pessoa.hasMany(models.Curso, {
-        foreignKey: 'docente_id'
-      });
-      Pessoa.hasMany(models.Matricula, {
-          foreignKey: 'estudante_id'
-      });
+      
+        // Associação com o modelo Curso para representar cursos atribuídos a uma pessoa na função de docente
+        Pessoa.hasMany(models.Curso, {
+          foreignKey: 'docente_id'
+        });
+
+        // Associação com o modelo Matricula para representar as matrículas de uma pessoa na função de estudante
+        // Adicionado escopo para filtrar registros de matrículas com status 'matriculado', e alias 'aulasMatriculadas'
+        Pessoa.hasMany(models.Matricula, {
+            foreignKey: 'estudante_id', 
+            scope: { status: 'matriculado'}, 
+            as: 'aulasMatriculadas'
+        });
+
     }
   }
   // Definição do modelo de dados da tabela Pessoa

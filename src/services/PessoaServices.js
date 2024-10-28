@@ -12,6 +12,17 @@ class PessoaServices extends Service {
     constructor() {
         super('Pessoa');
     }
+
+    async pegaMatriculasPorEstudante(id) {
+        
+        // Busca o estudante pelo ID usando o método da classe pai
+        const estudante = await super.pegaUmRegistroPorId(id);
+        
+        // Retorna as aulas matriculadas do estudante filtrando pelo alias 'aulasMatriculadas'
+        const listaMatriculas = await estudante.getAulasMatriculadas();
+        return listaMatriculas;
+    }
+    
 }
 
 module.exports = PessoaServices; // Exportando a classe PessoaServices

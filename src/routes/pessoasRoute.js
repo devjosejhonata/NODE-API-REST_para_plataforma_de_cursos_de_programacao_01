@@ -28,6 +28,10 @@ router.put('/pessoas/:id', (req, res) => pessoaController.atualiza(req, res));
 // Rota para excluir um registro de pessoa
 router.delete('/pessoas/:id', (req, res) => pessoaController.exclui(req, res));
 
+// Rota para buscar todas as matrículas de um estudante específico pelo ID
+router.get('/pessoas/:estudanteId/matriculas', (req, res) => pessoaController.pegaMatriculas(req, res));
+
+
 // Rota para criar uma nova matrícula para uma pessoa específica identificada pelo estudanteId
 router.post('/pessoas/:estudanteId/matriculas', (req, res) => matriculaController.criaNovo(req, res));
 
