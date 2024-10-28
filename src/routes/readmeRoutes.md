@@ -8,14 +8,13 @@ As rotas atuam como um ponto de entrada para as operações da aplicação, cone
 
 ### Arquivos
 
-- **index.js**: Serve como o ponto de acesso principal para todas as rotas da aplicação. Ele é responsável por agrupar e configurar as rotas de maneira centralizada, facilitando a inicialização da API.
-- **pessoasRoute.js**: Define as rotas relacionadas à entidade **Pessoa**, incluindo operações como listagem, criação, atualização e exclusão de registros de pessoas.
+- index.js: Serve como o ponto de acesso principal para todas as rotas da aplicação. Ele é responsável por agrupar e configurar as rotas de maneira centralizada, facilitando a inicialização da API.
 
-AS DEMAIS ROTAS AINDA SERÃO CRIADAS: 
+- pessoasRoute.js: Define as rotas relacionadas à entidade Pessoa, incluindo operações como listagem, criação, atualização e exclusão de registros de pessoas. Além disso, inclui rotas de Matrícula específicas para uma pessoa, associando o registro de matrícula diretamente ao estudante.
 
-- **cursoRoute.js**: Contém as rotas associadas à entidade **Curso**, gerenciando as interações dos usuários com os cursos disponíveis.
-- **matriculaRoute.js**: Responsável por definir as rotas para gerenciar as **Matrículas**, permitindo que usuários se inscrevam em cursos.
-- **categoriaRoute.js**: Abrange as rotas ligadas às **Categorias**, possibilitando a organização e a consulta de cursos em diferentes segmentos.
+- categoriasRoute.js: Abrange as rotas ligadas às Categorias, possibilitando a organização dos cursos em diferentes segmentos e facilitando a consulta de cursos categorizados.
+
+- cursosRoute.js: Contém as rotas associadas à entidade Curso, permitindo a criação, listagem, atualização e remoção de cursos na plataforma.
 
 ## Observações
 

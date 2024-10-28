@@ -6,8 +6,10 @@
 const { Router } = require('express'); // Importando Router do express
 
 const PessoaController = require('../controllers/PessoaController.js'); // Importando o controller da entidade Pessoa
+const MatriculaController = require('../controllers/MatriculaController.js'); // Importando o controller da entidade Matricula para operações relacionadas a matrículas
 
 const pessoaController = new PessoaController(); // Criando uma instância do controller PessoaController
+const matriculaController = new MatriculaController(); // Criando uma instância do controller MatriculaController
 
 const router = Router(); // Criando uma instância do Router
 
@@ -25,5 +27,8 @@ router.put('/pessoas/:id', (req, res) => pessoaController.atualiza(req, res));
 
 // Rota para excluir um registro de pessoa
 router.delete('/pessoas/:id', (req, res) => pessoaController.exclui(req, res));
+
+// Rota para criar uma nova matrícula para uma pessoa específica identificada pelo estudanteId
+router.post('/pessoas/:estudanteId/matriculas', (req, res) => matriculaController.criaNovo(req, res));
 
 module.exports = router; // Exportando o router para ser usado em outras partes da aplicação
