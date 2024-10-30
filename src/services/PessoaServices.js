@@ -22,6 +22,12 @@ class PessoaServices extends Service {
         const listaMatriculas = await estudante.getAulasMatriculadas();
         return listaMatriculas;
     }
+
+    async pegaPessoasEscopoTodos() {
+        const listaPessoas = await super.pegaRegistrosPorEscopo('todosOsRegistros');
+
+        return listaPessoas;
+    }
     
 }
 

@@ -56,6 +56,13 @@ module.exports = (sequelize, DataTypes) => {
       where: {
         ativo: true
       }
+    }, 
+
+    //scopo para buscar todos os registros, inclusive os inativos
+    scopes: {
+      todosOsRegistros: {
+        where: {}
+      }
     }
   });
   return Pessoa;

@@ -1,6 +1,7 @@
 /*
 - Neste arquivo estão as rotas para a entidade Pessoa.
 - As rotas são responsáveis por mapear URLs para operações, como criação, leitura, atualização e deleção de registros de pessoas.
+- As rotas foram listadas na ordem, para nao haver conflito entre elas.
 */
 
 const { Router } = require('express'); // Importando Router do express
@@ -15,6 +16,9 @@ const router = Router(); // Criando uma instância do Router
 
 // Definindo a rota GET para listar todas as pessoas
 router.get('/pessoas', (req, res) => pessoaController.pegaTodos(req, res));
+
+// Rota para buscar todas as pessoas, inclusive as inativas
+router.get('/pessoas/todos', (req, res) => pessoaController.pegaTodasAsPessoas(req, res));
 
 // Rota para buscar uma pessoa específica pelo ID
 router.get('/pessoas/:id', (req, res) => pessoaController.pegaUmPorId(req, res));
@@ -34,5 +38,7 @@ router.get('/pessoas/:estudanteId/matriculas', (req, res) => pessoaController.pe
 
 // Rota para criar uma nova matrícula para uma pessoa específica identificada pelo estudanteId
 router.post('/pessoas/:estudanteId/matriculas', (req, res) => matriculaController.criaNovo(req, res));
+
+
 
 module.exports = router; // Exportando o router para ser usado em outras partes da aplicação

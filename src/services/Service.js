@@ -28,6 +28,11 @@ class Service {
        return dataSource[this.model].findByPk(id);
     }
 
+    // Metodo para buscar um registro pelo scopo.
+    async pegaRegistrosPorEscopo (escopo) {
+        return dataSource[this.model].scope(escopo).findAll();
+    }
+
     // Método para criar um novo registro no banco de dados
     async criaRegistro(dadosDoRegistro) {
         // Usa o método create do Sequelize para inserir um novo registro
