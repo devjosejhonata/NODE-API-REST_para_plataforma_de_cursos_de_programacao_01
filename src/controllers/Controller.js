@@ -35,7 +35,8 @@ class Controller {
             // Retorna o registro encontrado com status 200
             return res.status(200).json(umRegistro);
         } catch (erro) {
-            // Caso haja erro, poderia ser retornado um status e mensagem de erro (não implementado aqui)
+            // Retorna um erro 500 em caso de falha
+            return res.status(500).json({ mensagem: 'Erro ao buscar dados' });
         }
     }
 
@@ -49,7 +50,8 @@ class Controller {
             // Retorna o registro recém-criado
             return res.status(200).json(novoRegistroCriado);
         } catch (erro) {
-            // Em caso de erro, uma mensagem e status poderiam ser retornados (não implementado aqui)
+            // Retorna um erro 500 em caso de falha
+            return res.status(500).json({ mensagem: 'Erro ao buscar dados' });
         }
     }
 
@@ -72,7 +74,8 @@ class Controller {
             return res.status(200).json({ mensagem: 'Atualizado com sucesso' });
 
         } catch (erro) {
-            // Caso ocorra um erro, uma resposta adequada poderia ser retornada (não implementado aqui)
+            // Retorna um erro 500 em caso de falha
+            return res.status(500).json({ mensagem: 'Erro ao buscar dados' });
         }
     }
 
