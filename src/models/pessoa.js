@@ -45,7 +45,18 @@ module.exports = (sequelize, DataTypes) => {
     // Adicionado para referenciar a tabela pessoas no banco de dados 
     // o nome 'pessoas' segue o padrao de nomeclatura do mysql, com o nome em plural e em minusculo
     tableName: 'pessoas',
+
+    //para trabalhar com soft delete
     paranoid:true,
+
+    // Adicionado para definir um escopo padrão para as consultas
+    // sera exibido apenas registros com o campo 'ativo' igual a true
+    // No banco nao sera alterado nada com isso, someente vai ser exibido nas buscas os registros com ativo = true
+    defaultScope: {
+      where: {
+        ativo: true
+      }
+    }
   });
   return Pessoa;
 };
