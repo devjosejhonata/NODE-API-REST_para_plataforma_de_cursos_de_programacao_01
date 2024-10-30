@@ -45,6 +45,7 @@ module.exports = (sequelize, DataTypes) => {
     // Adicionado para referenciar a tabela pessoas no banco de dados 
     // o nome 'pessoas' segue o padrao de nomeclatura do mysql, com o nome em plural e em minusculo
     tableName: 'pessoas',
+    paranoid:true,
   });
   return Pessoa;
 };

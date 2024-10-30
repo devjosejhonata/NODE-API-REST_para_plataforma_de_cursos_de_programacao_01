@@ -30,6 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     // Adicionado para referenciar a tabela categorias no banco de dados 
     // o nome 'categorias' segue o padrao de nomeclatura do mysql, com o nome em plural e em minusculo
     tableName: 'categorias',
+    paranoid:true,
   });
   return Categoria;
 };
