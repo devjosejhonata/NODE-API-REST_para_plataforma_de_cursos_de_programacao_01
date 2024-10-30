@@ -51,7 +51,7 @@ class Controller {
             return res.status(200).json(novoRegistroCriado);
         } catch (erro) {
             // Retorna um erro 500 em caso de falha
-            return res.status(500).json({ mensagem: 'Erro ao buscar dados' });
+            return res.status(500).json({ erro: erro.message });
         }
     }
 

@@ -7,6 +7,9 @@
 
 'use strict'; // Adicionado para garantir que o código seja executado em modo estrito
 
+//importando o arquivo contendo a funçao que simula a validação de cpf;
+const isCpfValido = require('../utils/validaCpfHelpers.js');
+
 // Importação do módulo Model do sequelize para a criação de um modelo de dados
 // Importação do módulo DataTypes do sequelize para a definição dos tipos de dados que serão utilizados no modelo
 const {
@@ -33,9 +36,32 @@ module.exports = (sequelize, DataTypes) => {
   }
   // Definição do modelo de dados da tabela Pessoa
   Pessoa.init({
-    nome: DataTypes.STRING,
-    email: DataTypes.STRING,
-    cpf: DataTypes.STRING,
+    nome: {
+      type: DataTypes.STRING,
+      validate: {
+        len: {
+          args: [3, 30],
+          msg: 'o campo nome deve ter no mínimo 3 caracteres'
+        }
+      }
+    },
+    email: {
+      type: DataTypes.STRING,
+      validate: {
+          isEmail: {
+              args: true,
+              msg: 'formato do email inválido'
+          }
+      }
+    },
+    cpf: {
+      type: DataTypes.STRING,
+      validate: {
+          cpfEhValido: (cpf) => {
+              if (!isCpfValido (cpf)) throw new Error('numero de CPF inválido');
+          }
+      }
+  },
     ativo: DataTypes.BOOLEAN,
     role: DataTypes.STRING
   }, {
