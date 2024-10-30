@@ -12,12 +12,12 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
     // Inserindo registros iniciais na tabela `categorias`
+    // O método queryInterface.bulkInsert() é utilizado para inserir dados em massa na tabela `categorias`
     await queryInterface.bulkInsert('categorias', [
-      // O método queryInterface.bulkInsert() é utilizado para inserir dados em massa na tabela `categorias`
       {
-        titulo: 'Node.js', // Nome da categoria
-        createdAt: new Date(), // Data de criação do registro
-        updatedAt: new Date(), // Data de atualização do registro
+        titulo: 'Node.js',
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         titulo: 'Java',

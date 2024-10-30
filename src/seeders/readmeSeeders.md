@@ -9,10 +9,8 @@ Dentro desse arquivo contem os dados testes da pasta arquivos-base, que estao se
 
 : npx sequelize-cli db:seed:all , no caso para todos os arquivos.
 
-como ja existia o arquivo seeders pessoa, os demais foram criados posteriormente, outro comando foi utilizado para nao haver duplicação nos dados. cada arquivo de uma vez.
+Se ja existir um arquivo seeder e eu criar outro arquivo, outro comando sera utilizado para nao haver duplicação nos dados. cada arquivo de uma vez.
 
-: npx sequelize-cli db:seed --seed 20241026230020-demo-categorias.js
-: npx sequelize-cli db:seed --seed 20241026230055-demo-cursos.js
-: npx sequelize-cli db:seed --seed 20241026230133-demo-matriculas.js
+: npx sequelize-cli db:seed --seed 20241026230020-demo-categorias.js //exemplo
 
 : após executar esse comando, os dados inseridos nos arquivos seed seram inseridos no banco.
