@@ -45,10 +45,10 @@ class Service {
     }
 
     // Método para atualizar um registro existente
-    async atualizaRegistro(dadosAtualizados, id) {
+    async atualizaRegistro(dadosAtualizados, where) {
         // Atualiza o registro onde o ID for correspondente
         const listadeRegistrosAtualizados = dataSource[this.model].update(dadosAtualizados, {
-            where: { id: id }
+            where: { ...where }
         });
         
         // Se nenhum registro for atualizado, retorna falso

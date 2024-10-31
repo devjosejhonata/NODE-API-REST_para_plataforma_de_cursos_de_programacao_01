@@ -33,17 +33,22 @@ router.put('/pessoas/:id', (req, res) => pessoaController.atualiza(req, res));
 router.delete('/pessoas/:id', (req, res) => pessoaController.exclui(req, res));
 
 // Rota para buscar todas as matrículas de um estudante específico pelo ID
-router.get('/pessoas/:estudanteId/matriculas', (req, res) => pessoaController.pegaMatriculasAtivas(req, res));
+router.get('/pessoas/:estudante_id/matriculas', (req, res) => pessoaController.pegaMatriculasAtivas(req, res));
 
 //Rota para buscar todas as matriculas, etatus matriculado e cancelado
-router.get('/pessoas/:estudanteId/matriculas/todos', (req, res) => pessoaController.pegaTodasAsMatriculas(req, res));
+router.get('/pessoas/:estudante_id/matriculas/todos', (req, res) => pessoaController.pegaTodasAsMatriculas(req, res));
 
 //Rota para buscar uma matricula pelo ID
-router.get('/pessoas/:estudanteId/matriculas/:id', (req, res) => pessoaController.pegaUm(req, res));
+router.get('/pessoas/:estudante_id/matriculas/:id', (req, res) => matriculaController.pegaUm(req, res));
 
 // Rota para criar uma nova matrícula para uma pessoa específica identificada pelo estudanteId
-router.post('/pessoas/:estudanteId/matriculas', (req, res) => matriculaController.criaNovo(req, res));
+router.post('/pessoas/:estudante_id/matriculas', (req, res) => matriculaController.criaNovo(req, res));
 
+// Rota para atualizar uma matrícula existente de um estudante específico pelo ID
+router.put('/pessoas/:estudante_id/matriculas:id', (req, res) => matriculaController.atualiza(req, res));
+
+// Rota para excluir uma matrícula de um estudante específico pelo ID
+router.delete('/pessoas/:estudante_id/matriculas/:id', (req, res) => matriculaController.exclui(req, res));
 
 
 module.exports = router; // Exportando o router para ser usado em outras partes da aplicação

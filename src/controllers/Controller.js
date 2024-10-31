@@ -78,12 +78,14 @@ class Controller {
     // Método para atualizar um registro existente
     async atualiza(req, res) {
 
-        const { id } = req.params; // Obtém o ID do registro a ser atualizado
+        const { ...params } = req.params; // Obtém o params do registro a ser atualizado
         const dadosAtualizados = req.body; // Obtém os dados atualizados da requisição
+
+        const where = converteIds(params);
 
         try {
             // Atualiza o registro usando o serviço da entidade
-            const foiAtualizado = await this.entidadeService.atualizaRegistro(dadosAtualizados, Number(id));
+            const foiAtualizado = await this.entidadeService.atualizaRegistro(dadosAtualizados, where);
             
             // Se não houver atualização, retorna uma mensagem de erro
             if (!foiAtualizado) {

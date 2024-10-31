@@ -17,11 +17,11 @@ class PessoaController extends Controller {
 
     async pegaMatriculasAtivas(req, res) {
         // Extrai o ID do estudante a partir dos parâmetros da rota
-        const { estudanteId } = req.params;
+        const { estudante_id } = req.params;
         
         try {
           // Chama o serviço para obter as matrículas Ativas
-          const listaMatriculas = await pessoaServices.pegaMatriculasAtivasPorEstudante(Number(estudanteId));
+          const listaMatriculas = await pessoaServices.pegaMatriculasAtivasPorEstudante(Number(estudante_id));
 
           return res.status(200).json(listaMatriculas); // Retorna a lista de matrículas como JSON
 
@@ -34,11 +34,11 @@ class PessoaController extends Controller {
 
     async pegaTodasAsMatriculas(req, res) {
       // Extrai o ID do estudante a partir dos parâmetros da rota
-      const { estudanteId } = req.params;
+      const { estudante_id } = req.params;
       
       try {
         // Chama o serviço para obter todas as matrículas dos estudantes
-        const listaMatriculas = await pessoaServices.pegaTodasAsMatriculasPorEstudante(Number(estudanteId));
+        const listaMatriculas = await pessoaServices.pegaTodasAsMatriculasPorEstudante(Number(estudante_id));
 
         return res.status(200).json(listaMatriculas); // Retorna a lista de matrículas como JSON
 
