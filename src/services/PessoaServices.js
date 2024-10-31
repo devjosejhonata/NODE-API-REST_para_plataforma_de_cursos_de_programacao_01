@@ -13,13 +13,23 @@ class PessoaServices extends Service {
         super('Pessoa');
     }
 
-    async pegaMatriculasPorEstudante(id) {
+    async pegaMatriculasAtivasPorEstudante(id) {
         
         // Busca o estudante pelo ID usando o método da classe pai
         const estudante = await super.pegaUmRegistroPorId(id);
         
         // Retorna as aulas matriculadas do estudante filtrando pelo alias 'aulasMatriculadas'
         const listaMatriculas = await estudante.getAulasMatriculadas();
+        return listaMatriculas;
+    }
+    
+    async pegaTodasAsMatriculasPorEstudante(id) {
+        
+        // Busca o estudante pelo ID usando o método da classe pai
+        const estudante = await super.pegaUmRegistroPorId(id);
+        
+        // Retorna as aulas matriculadas do estudante filtrando pelo alias 'todasAsMatriculas'
+        const listaMatriculas = await estudante.getTodasAsMatriculas();
         return listaMatriculas;
     }
 

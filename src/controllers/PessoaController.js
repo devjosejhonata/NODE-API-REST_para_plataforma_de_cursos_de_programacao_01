@@ -15,13 +15,13 @@ class PessoaController extends Controller {
         super(pessoaServices);
     }
 
-    async pegaMatriculas(req, res) {
+    async pegaMatriculasAtivas(req, res) {
         // Extrai o ID do estudante a partir dos parâmetros da rota
         const { estudanteId } = req.params;
         
         try {
-          // Chama o serviço para obter todas as matrículas do estudante com o ID fornecido
-          const listaMatriculas = await pessoaServices.pegaMatriculasPorEstudante(Number(estudanteId));
+          // Chama o serviço para obter as matrículas Ativas
+          const listaMatriculas = await pessoaServices.pegaMatriculasAtivasPorEstudante(Number(estudanteId));
 
           return res.status(200).json(listaMatriculas); // Retorna a lista de matrículas como JSON
 
@@ -31,6 +31,23 @@ class PessoaController extends Controller {
           return res.status(500).json({ erro: 'Erro ao buscar matrículas' });
         }
     }
+
+    async pegaTodasAsMatriculas(req, res) {
+      // Extrai o ID do estudante a partir dos parâmetros da rota
+      const { estudanteId } = req.params;
+      
+      try {
+        // Chama o serviço para obter todas as matrículas dos estudantes
+        const listaMatriculas = await pessoaServices.pegaTodasAsMatriculasPorEstudante(Number(estudanteId));
+
+        return res.status(200).json(listaMatriculas); // Retorna a lista de matrículas como JSON
+
+      } catch (erro) {
+          
+        // Envia uma resposta de erro caso algo dê errado
+        return res.status(500).json({ erro: 'Erro ao buscar matrículas' });
+      }
+  }
 
     async pegaTodasAsPessoas(req, res) {
       try {

@@ -32,6 +32,12 @@ module.exports = (sequelize, DataTypes) => {
             as: 'aulasMatriculadas'
         });
 
+        //Escopo adicionado para filtrar todas as matriculas
+        Pessoa.hasMany(models.Matricula, {
+          foreignKey: 'estudante_id',
+          as: 'todasAsMatriculas'
+        });
+
     }
   }
   // Definição do modelo de dados da tabela Pessoa
