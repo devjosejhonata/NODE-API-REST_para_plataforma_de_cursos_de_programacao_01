@@ -17,6 +17,9 @@ router.get('/cursos', (req, res) => cursoController.pegaTodos(req, res));
 // Rota para buscar um curso específico pelo ID
 router.get('/cursos/:id', (req, res) => cursoController.pegaUmPorId(req, res));
 
+// Rota para buscar cursos por data de início ou intervalo de datas
+router.get('/cursos/data/:dataInicio/:dataFim?', (req, res) => cursoController.pegaPorDataOuIntervalo(req, res));
+
 // Rota para criar um novo curso
 router.post('/cursos', (req, res) => cursoController.criaNovo(req, res));
 

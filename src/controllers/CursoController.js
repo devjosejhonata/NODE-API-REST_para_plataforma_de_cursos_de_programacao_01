@@ -14,6 +14,23 @@ class CursoController extends Controller {
     constructor() {
         super(cursoServices);
     }
+
+    // Método unificado para buscar cursos por data ou intervalo de datas
+    async pegaPorDataOuIntervalo(req, res) {
+        const { dataInicio, dataFim } = req.params; // Obtendo as datas a partir dos parâmetros da requisição
+
+        try {
+            // Usando o método unificado no cursoServices para data ou intervalo de datas
+            const cursos = await cursoServices.pegaPorDataOuIntervalo(dataInicio, dataFim);
+
+            if (cursos.length === 0) {
+                return res.status(404).json({ mensagem: 'Nenhum curso encontrado para a(s) data(s) fornecida(s).' });
+            }
+            return res.status(200).json(cursos); // Retorna os cursos encontrados
+        } catch (error) {
+            return res.status(500).json({ mensagem: 'Erro ao buscar dados', erro: error.message });
+        }
+    }
     
 }
 

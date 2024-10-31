@@ -13,41 +13,40 @@ class Service {
     
     // O construtor recebe o nome do modelo para ser usado nas operações do service
     constructor(nomeDoModel) {
-        this.model = nomeDoModel; // Define o modelo específico que será usado nas operações do serviço
+        this.model = dataSource[nomeDoModel]; // Atribui o modelo Sequelize correto
     }
 
     // Método genérico para buscar todos os registros de um determinado modelo
     async pegaTodosOsRegistros() {
         // Utiliza o Sequelize para buscar todos os registros da tabela correspondente
-        return dataSource[this.model].findAll();
+        return this.model.findAll();
     }
 
     // Método para buscar um único registro pelo ID
     async pegaUmRegistroPorId(id) {
         // Usa findByPk para localizar um registro pela chave primária (ID)
-       return dataSource[this.model].findByPk(id);
+        return this.model.findByPk(id);
     }
 
     //Serviço para buscar uma matricula pelo id
     async pegaUmRegistro(where) {
-        return dataSource[this.model].findOne({ where: { ...where } });
+        return this.model.findOne({ where: { ...where } });
     }
 
     // Metodo para buscar um registro pelo scopo.
-    async pegaRegistrosPorEscopo (escopo) {
-        return dataSource[this.model].scope(escopo).findAll();
+    async pegaRegistrosPorEscopo(escopo) {
+        return this.model.scope(escopo).findAll();
     }
 
     // Método para criar um novo registro no banco de dados
     async criaRegistro(dadosDoRegistro) {
-        // Usa o método create do Sequelize para inserir um novo registro
-       return dataSource[this.model].create(dadosDoRegistro);
+        return this.model.create(dadosDoRegistro);
     }
 
     // Método para atualizar um registro existente
     async atualizaRegistro(dadosAtualizados, where) {
         // Atualiza o registro onde o ID for correspondente
-        const listadeRegistrosAtualizados = dataSource[this.model].update(dadosAtualizados, {
+        const listadeRegistrosAtualizados = await this.model.update(dadosAtualizados, {
             where: { ...where }
         });
         
@@ -62,8 +61,7 @@ class Service {
 
     // Método para excluir um registro do banco de dados
     async excluiRegistro(id) {
-        // Usa o método destroy do Sequelize para deletar o registro pelo ID
-        return dataSource[this.model].destroy({ where: { id: id } });
+        return this.model.destroy({ where: { id: id } });
     }
 }
 
