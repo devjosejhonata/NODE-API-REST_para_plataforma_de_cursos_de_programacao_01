@@ -3,6 +3,8 @@
 - Ele contém métodos comuns que serão compartilhados entre diferentes entidades.
 */
 
+const converteIds = require('../utils/conversorDeStringHelpers.js');
+
 class Controller {
 
     // O construtor recebe um serviço específico da entidade e o armazena como uma propriedade
@@ -44,9 +46,11 @@ class Controller {
     async pegaUm(req, res) {
         const { ...params } = req.params; // Obtém o ID da requisição
 
+        const where = converteIds(params);
+
         try {
             
-            const umRegistro = await this.entidadeService.pegaUmRegistro(params);
+            const umRegistro = await this.entidadeService.pegaUmRegistro(where);
             
             // Retorna o registro encontrado com status 200
             return res.status(200).json(umRegistro);
