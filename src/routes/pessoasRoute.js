@@ -38,6 +38,9 @@ router.get('/pessoas/:estudanteId/matriculas', (req, res) => pessoaController.pe
 //Rota para buscar todas as matriculas, etatus matriculado e cancelado
 router.get('/pessoas/:estudanteId/matriculas/todos', (req, res) => pessoaController.pegaTodasAsMatriculas(req, res));
 
+//Rota para buscar uma matricula pelo ID
+router.get('/pessoas/:estudanteId/matriculas/:id', (req, res) => pessoaController.pegaUm(req, res));
+
 // Rota para criar uma nova matrícula para uma pessoa específica identificada pelo estudanteId
 router.post('/pessoas/:estudanteId/matriculas', (req, res) => matriculaController.criaNovo(req, res));
 

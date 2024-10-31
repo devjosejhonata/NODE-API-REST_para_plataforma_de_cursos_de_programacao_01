@@ -28,6 +28,11 @@ class Service {
        return dataSource[this.model].findByPk(id);
     }
 
+    //Serviço para buscar uma matricula pelo id
+    async pegaUmRegistro(where) {
+        return dataSource[this.model].findOne({ where: { ...where } });
+    }
+
     // Metodo para buscar um registro pelo scopo.
     async pegaRegistrosPorEscopo (escopo) {
         return dataSource[this.model].scope(escopo).findAll();

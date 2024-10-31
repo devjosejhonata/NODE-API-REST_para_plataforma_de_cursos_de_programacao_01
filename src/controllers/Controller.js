@@ -40,6 +40,22 @@ class Controller {
         }
     }
 
+    //Metodo para buscar uma matricula pelo ID
+    async pegaUm(req, res) {
+        const { ...params } = req.params; // Obtém o ID da requisição
+
+        try {
+            
+            const umRegistro = await this.entidadeService.pegaUmRegistro(params);
+            
+            // Retorna o registro encontrado com status 200
+            return res.status(200).json(umRegistro);
+        } catch (erro) {
+            // Retorna um erro 500 em caso de falha
+            return res.status(500).json({ mensagem: 'Erro ao buscar dados' });
+        }
+    }
+
     // Método para criar um novo registro
     async criaNovo(req, res) {
         const dadosParaCriacao = req.body; // Obtém os dados da requisição
