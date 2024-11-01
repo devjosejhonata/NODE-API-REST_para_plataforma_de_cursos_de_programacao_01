@@ -19,3 +19,36 @@
 - Comando utilizado para fazer as migrações dos dados para o banco: npx sequelize-cli db:migrate
 
 - Para visualizar as tabelas do banco, tenho instalado no pc o DB Browser for SQLite e o Beekeeper Studio, e tambem a extensao no vscode SQLite Viewer.
+
+## URLs testes
+
+- Urls teste para buscar as pessoas: 
+
+http://localhost:3000/pessoas
+
+http://localhost:3000/pessoas/todos
+
+http://localhost:3000/pessoas/1
+
+- Url teste para buscar os cursos:
+
+http://localhost:3000/cursos
+
+http://localhost:3000/cursos/3
+
+- Url teste para buscar matriculas de um estudante:
+
+http://localhost:3000/pessoas/1/matriculas
+
+http://localhost:3000/pessoas/1/matriculas/3
+
+- Url para testar a contagem de cursos matriculados por estudante, retornando a quantidade e quais cursos: 
+
+GET http://localhost:3000/pessoas/2/matriculas/quantidade
+
+- Url para testar a busca por datas: 
+
+Buscar por data específica: GET http://localhost:3000/cursos/data/2023-05-01
+
+Buscar por intervalo de datas: GET http://localhost:3000/cursos/data/2023-01-01/2023-05-01
+

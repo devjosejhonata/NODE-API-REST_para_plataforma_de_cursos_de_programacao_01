@@ -25,16 +25,3 @@ Os controladores são a camada intermediária entre as rotas e os serviços, gar
 - É recomendável adicionar comentários nos métodos dos controladores para explicar a lógica de cada operação, facilitando a compreensão para outros desenvolvedores.
 
 Com essa estrutura bem definida, a manutenção e a evolução da aplicação se tornam mais eficientes e organizadas.
-
-## URLs testes
-
-- Url para testar a contagem de cursos matriculados por estudante, retornando a quantidade e quais cursos: 
-
-GET http://localhost:3000/pessoas/2/matriculas/quantidade
-
-
-- Url para testar a busca por datas: 
-
-Buscar por data específica: GET http://localhost:3000/cursos/data/2023-05-01
-
-Buscar por intervalo de datas: GET http://localhost:3000/cursos/data/2023-01-01/2023-05-01
