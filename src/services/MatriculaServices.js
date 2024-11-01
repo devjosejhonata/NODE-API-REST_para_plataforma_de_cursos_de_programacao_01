@@ -12,6 +12,28 @@ class MatriculaServices extends Service {
     constructor() {
         super('Matricula');
     }
+
+    // Método para obter a quantidade de matrículas e os IDs dos cursos por ID do estudante
+    async obterQuantidadeECursosPorEstudante(estudante_id) {
+        const [total, matriculas] = await Promise.all([
+            this.model.count({
+                where: {
+                    estudante_id,
+                    status: 'matriculado' // Considerando apenas matrículas com status 'matriculado'
+                }
+            }),
+            this.model.findAll({
+                where: {
+                    estudante_id,
+                    status: 'matriculado'
+                },
+                attributes: ['curso_id'] // Retorna apenas os IDs dos cursos
+            })
+        ]);
+
+        return { total, cursos: matriculas.map(({ curso_id }) => curso_id) }; // Retorna contagem e IDs dos cursos
+    }
+
 }
 
 module.exports = MatriculaServices; // Exportando a classe MatriculaServices

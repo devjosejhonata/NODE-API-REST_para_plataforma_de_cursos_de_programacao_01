@@ -32,6 +32,9 @@ router.put('/pessoas/:id', (req, res) => pessoaController.atualiza(req, res));
 // Rota para excluir um registro de pessoa
 router.delete('/pessoas/:id', (req, res) => pessoaController.exclui(req, res));
 
+// Rota para contar cursos por ID do estudante
+router.get('/pessoas/:estudante_id/matriculas/quantidade', (req, res) => matriculaController.contaCursosPorEstudante(req, res));
+
 // Rota para buscar todas as matrículas de um estudante específico pelo ID
 router.get('/pessoas/:estudante_id/matriculas', (req, res) => pessoaController.pegaMatriculasAtivas(req, res));
 
@@ -45,10 +48,9 @@ router.get('/pessoas/:estudante_id/matriculas/:id', (req, res) => matriculaContr
 router.post('/pessoas/:estudante_id/matriculas', (req, res) => matriculaController.criaNovo(req, res));
 
 // Rota para atualizar uma matrícula existente de um estudante específico pelo ID
-router.put('/pessoas/:estudante_id/matriculas:id', (req, res) => matriculaController.atualiza(req, res));
+router.put('/pessoas/:estudante_id/matriculas/:id', (req, res) => matriculaController.atualiza(req, res));
 
 // Rota para excluir uma matrícula de um estudante específico pelo ID
 router.delete('/pessoas/:estudante_id/matriculas/:id', (req, res) => matriculaController.exclui(req, res));
-
 
 module.exports = router; // Exportando o router para ser usado em outras partes da aplicação
