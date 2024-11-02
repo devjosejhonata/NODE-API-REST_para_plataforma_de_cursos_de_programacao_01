@@ -22,19 +22,25 @@
 
 ## URLs testes
 
-== Urls teste para buscar as pessoas: 
+== Urls teste para buscar as pessoas, com paginação sendo "ativas ou ativas e inativas", por id, ou navegar entre as paginas: 
 
 http://localhost:3000/pessoas
 
+http://localhost:3000/pessoas?page=2
+
 http://localhost:3000/pessoas/todos
+
+http://localhost:3000/pessoas/todos?page=2
 
 http://localhost:3000/pessoas/1
 
-== Url teste para buscar os cursos:
+== Url teste para buscar os cursos com paginação; por id; navegar entre as paginas:
 
 http://localhost:3000/cursos
 
 http://localhost:3000/cursos/3
+
+http://localhost:3000/cursos?page=2
 
 == Url teste para buscar matriculas de um estudante:
 
