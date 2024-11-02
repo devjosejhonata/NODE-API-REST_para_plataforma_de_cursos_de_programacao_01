@@ -15,7 +15,7 @@ const matriculaController = new MatriculaController(); // Criando uma instância
 const router = Router(); // Criando uma instância do Router
 
 // Definindo a rota GET para listar todas as pessoas
-router.get('/pessoas', (req, res) => pessoaController.pegaTodos(req, res));
+router.get('/pessoas', (req, res) => pessoaController.pegaPessoasAtivas(req, res));
 
 // Rota para buscar todas as pessoas, inclusive as inativas
 router.get('/pessoas/todos', (req, res) => pessoaController.pegaTodasAsPessoas(req, res));

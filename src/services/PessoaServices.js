@@ -58,6 +58,45 @@ class PessoaServices extends Service {
         );
     }
 
+    // Busca pessoas ativas com paginação
+    async pegaPessoasAtivasPaginado(page, limit) {
+        
+        const offset = (page - 1) * limit; // Calcula o deslocamento (offset) com base na página atual e no limite de resultados por página
+
+        // Realiza a busca no banco de dados, contando e buscando as pessoas ativas
+        const { count, rows } = await this.model.findAndCountAll({
+            where: { ativo: true }, // Filtra para incluir apenas pessoas ativas
+            limit, // Limita o número de resultados retornados
+            offset, // Aplica o deslocamento para a paginação
+            order: [['nome', 'ASC']], // Ordena os resultados pelo nome em ordem ascendente
+        });
+
+        const totalPaginas = Math.ceil(count / limit); // Calcula o total de páginas com base na contagem total de pessoas ativas e o limite
+
+        if (page > totalPaginas) throw new Error('Página não encontrada'); // Verifica se a página solicitada existe, lançando um erro se for maior que o total de páginas
+
+        return { pessoas: rows, totalPaginas, totalPessoas: count }; // Retorna um objeto contendo as pessoas encontradas, o total de páginas e o total de pessoas
+    }
+
+    // Busca todas as pessoas (ativas e inativas) com paginação
+    async pegaTodasAsPessoasPaginado(page, limit) {
+
+        const offset = (page - 1) * limit;
+
+        // Realiza a busca no banco de dados, contando e buscando todas as pessoas
+        const { count, rows } = await this.model.findAndCountAll({
+            limit, 
+            offset, 
+            order: [['nome', 'ASC']], 
+        });
+
+        const totalPaginas = Math.ceil(count / limit);
+
+        if (page > totalPaginas) throw new Error('Página não encontrada');
+
+        return { pessoas: rows, totalPaginas, totalPessoas: count };
+    }
+
 }
 
 module.exports = PessoaServices; // Exportando a classe PessoaServices

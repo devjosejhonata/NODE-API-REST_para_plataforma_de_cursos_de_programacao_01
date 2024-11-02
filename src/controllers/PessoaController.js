@@ -15,24 +15,33 @@ class PessoaController extends Controller {
           super(pessoaServices);
       }
 
-      // Adicionando o método pegaTodos para retornar apenas as pessoas ativas
-      async pegaTodos(req, res) {
+      // Método para retornar todas as pessoas ativas com paginação
+      async pegaPessoasAtivas(req, res) {
+        const page = Math.max(parseInt(req.query.page) || 1, 1);   // Define a página atual, garantindo que seja pelo menos 1
+        const limit = Math.max(parseInt(req.query.limit) || 2, 1);   // Define o limite de resultados por página, garantindo que seja pelo menos 1
+
         try {
-            // Busca apenas pessoas com status ativo
-            const listaPessoasAtivas = await pessoaServices.pegaPessoasAtivas();
-            return res.status(200).json(listaPessoasAtivas);
+            // Chama o serviço para obter as pessoas ativas com a paginação definida
+            const { pessoas, totalPaginas, totalPessoas } = await pessoaServices.pegaPessoasAtivasPaginado(page, limit);
+            // Retorna a resposta com os dados das pessoas
+            res.status(200).json({ pessoas, paginaAtual: page, totalPaginas, totalPessoas });
         } catch (erro) {
-            return res.status(500).json({ erro: erro.message });
+            res.status(erro.message === 'Página não encontrada' ? 404 : 500).json({ erro: erro.message });
         }
       }
 
-      // Método para retornar todas as pessoas (ativas e inativas)
+      // Método para retornar todas as pessoas (ativas e inativas) com paginação
       async pegaTodasAsPessoas(req, res) {
+        const page = Math.max(parseInt(req.query.page) || 1, 1);  // Define a página atual, garantindo que seja pelo menos 1
+        const limit = Math.max(parseInt(req.query.limit) || 2, 1);  // Define o limite de resultados por página, garantindo que seja pelo menos 1
+
         try {
-            const listaTodasAsPessoas = await pessoaServices.pegaPessoasEscopoTodos();
-            return res.status(200).json(listaTodasAsPessoas);
+            // Chama o serviço para obter todas as pessoas com a paginação definida
+            const { pessoas, totalPaginas, totalPessoas } = await pessoaServices.pegaTodasAsPessoasPaginado(page, limit);
+            // Retorna a resposta com os dados das pessoas
+            res.status(200).json({ pessoas, paginaAtual: page, totalPaginas, totalPessoas });
         } catch (erro) {
-            return res.status(500).json({ erro: erro.message });
+            res.status(erro.message === 'Página não encontrada' ? 404 : 500).json({ erro: erro.message });
         }
       }
 
@@ -47,7 +56,6 @@ class PessoaController extends Controller {
             return res.status(200).json(listaMatriculas); // Retorna a lista de matrículas como JSON
 
           } catch (erro) {
-              
             return res.status(500).json({ erro: 'Erro ao buscar matrículas' });
           }
       }
@@ -63,8 +71,7 @@ class PessoaController extends Controller {
           return res.status(200).json(listaMatriculas); // Retorna a lista de matrículas como JSON
 
         } catch (erro) {
-            
-          return res.status(500).json({ erro: 'Erro ao buscar matrículas' });
+             return res.status(500).json({ erro: 'Erro ao buscar matrículas' });
         }
     }
 
@@ -87,7 +94,6 @@ class PessoaController extends Controller {
           // Retorna a resposta de sucesso com mensagem baseada no status
           return res.status(200).json({ message: `Estudante ${status ? 'ativado' : 'desativado'} com sucesso.` });
       } catch (erro) {
-          // Retorna erro com mensagem específica dependendo do status
           return res.status(500).json({ erro: `Erro ao ${status ? 'ativar' : 'desativar'} estudante` });
       }
     }
@@ -106,7 +112,6 @@ class PessoaController extends Controller {
           // Retorna a resposta de sucesso com mensagem baseada no status da matrícula
           return res.status(200).json({ message: `Matrícula ${status === 'matriculado' ? 'reativada' : 'desativada'} com sucesso.` });
       } catch (erro) {
-          // Retorna erro com mensagem específica dependendo do status
           return res.status(500).json({ erro: `Erro ao ${status === 'matriculado' ? 'reativar' : 'desativar'} matrícula` });
       }
     }
