@@ -73,3 +73,15 @@ GET http://localhost:3000/pessoas/2/matriculas/quantidade
 Buscar por data específica: GET http://localhost:3000/cursos/data/2023-05-01
 
 Buscar por intervalo de datas: GET http://localhost:3000/cursos/data/2023-01-01/2023-05-01
+
+![1](https://github.com/user-attachments/assets/1c63b47a-d298-4abf-bf92-4ff055e623b6)
+![2](https://github.com/user-attachments/assets/a4946992-9fe8-4eb5-b8d5-c09dfa8e92f9)
+![3](https://github.com/user-attachments/assets/60c256d6-3fb4-4545-a845-2845a04a25d7)
+![4](https://github.com/user-attachments/assets/bfe9a7a8-5bb0-4fd0-96dd-db2cff769797)
+![5](https://github.com/user-attachments/assets/d9f65b94-f175-4096-9857-9f79c82f8ec5)
+![6](https://github.com/user-attachments/assets/6f2e93f1-4858-4622-8632-c1ced540e80b)
+
+
+
+
+
