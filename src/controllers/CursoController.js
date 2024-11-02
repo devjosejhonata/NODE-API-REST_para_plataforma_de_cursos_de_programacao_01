@@ -15,6 +15,16 @@ class CursoController extends Controller {
         super(cursoServices);
     }
 
+    // Método para buscar todos os cursos
+    async pegaTodos(req, res) {
+        try {
+            const cursos = await cursoServices.model.findAll(); // Busca todos os cursos
+            return res.status(200).json(cursos); // Retorna os cursos encontrados
+        } catch (error) {
+            return res.status(500).json({ mensagem: 'Erro ao buscar cursos', erro: error.message });
+        }
+    }
+
     // Método unificado para buscar cursos por data ou intervalo de datas
     async pegaPorDataOuIntervalo(req, res) {
         const { dataInicio, dataFim } = req.params; // Obtendo as datas a partir dos parâmetros da requisição
