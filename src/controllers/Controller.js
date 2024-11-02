@@ -12,20 +12,6 @@ class Controller {
         this.entidadeService = entidadeService; // Inicializa o serviço específico da entidade (ex: PessoaServices)
     }
 
-    // Método para buscar todos os registros da entidade
-    async pegaTodos(req, res) {
-        try {
-            // Chama o serviço da entidade para obter todos os registros
-            const listaDeRegistros = await this.entidadeService.pegaTodosOsRegistros();
-            
-            // Retorna os registros em formato JSON com status 200 (sucesso)
-            return res.status(200).json(listaDeRegistros);
-        } catch (error) {
-            // Retorna um erro 500 em caso de falha
-            return res.status(500).json({ mensagem: 'Erro ao buscar dados' });
-        }
-    }
-
     // Método para buscar um único registro por ID
     async pegaUmPorId(req, res) {
         const { id } = req.params; // Obtém o ID da requisição
