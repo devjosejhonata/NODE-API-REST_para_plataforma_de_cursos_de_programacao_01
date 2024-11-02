@@ -14,7 +14,17 @@ class CategoriaController extends Controller {
     constructor() {
         super(categoriaServices);
     }
-    
+
+    // Método para buscar todas as categorias
+    async pegaTodos(req, res) {
+        try {
+            const categorias = await categoriaServices.model.findAll(); // Busca todas as categorias
+            return res.status(200).json(categorias); // Retorna as categorias encontradas
+        } catch (error) {
+            return res.status(500).json({ mensagem: 'Erro ao buscar categorias', erro: error.message });
+        }
+    }
+
 }
 
 module.exports = CategoriaController; // Exportando a classe CategoriaController
