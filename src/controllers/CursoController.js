@@ -15,11 +15,14 @@ class CursoController extends Controller {
         super(cursoServices);
     }
 
-    // Método para buscar todos os cursos
+    // Método para buscar todos os cursos com paginação
     async pegaTodos(req, res) {
+        const page = Math.max(parseInt(req.query.page) || 1, 1); // Define a página mínima como 1
+        const limit = Math.max(parseInt(req.query.limit) || 2, 1); // Define o limite mínimo como 1
+
         try {
-            const cursos = await cursoServices.model.findAll(); // Busca todos os cursos
-            return res.status(200).json(cursos); // Retorna os cursos encontrados
+            const { cursos, totalPaginas, totalCursos } = await cursoServices.pegaTodosPaginado(page, limit); // Chama o novo método de serviços
+            return res.status(200).json({ cursos, paginaAtual: page, totalPaginas, totalCursos }); // Retorna os cursos encontrados com dados de paginação
         } catch (error) {
             return res.status(500).json({ mensagem: 'Erro ao buscar cursos', erro: error.message });
         }
