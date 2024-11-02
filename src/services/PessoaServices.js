@@ -38,7 +38,26 @@ class PessoaServices extends Service {
 
         return listaPessoas;
     }
-    
+
+    // Metodo que atualiza o status das matrículas de um estudante, podendo ser para um curso específico ou para todos
+    async atualizaStatusMatriculas(estudante_id, novoStatus, curso_id = null) {
+        // Define o status como 'matriculado' ou 'cancelado' com base no novoStatus fornecido
+        const status = novoStatus === 'matriculado' ? 'matriculado' : 'cancelado';
+        
+        // Define a cláusula where para selecionar as matrículas a serem atualizadas:
+        // Se curso_id for fornecido, aplica a atualização apenas para a matrícula desse curso
+        // Se curso_id for null, aplica a atualização para todas as matrículas do estudante
+        const whereClause = curso_id 
+            ? { estudante_id: estudante_id, curso_id: curso_id } 
+            : { estudante_id: estudante_id };
+
+        // Executa a atualização dos registros de matrícula com o status definido
+        await this.model.sequelize.models.Matricula.update(
+            { status: status },
+            { where: whereClause }
+        );
+    }
+
 }
 
 module.exports = PessoaServices; // Exportando a classe PessoaServices

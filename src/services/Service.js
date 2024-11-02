@@ -16,6 +16,11 @@ class Service {
         this.model = dataSource[nomeDoModel]; // Atribui o modelo Sequelize correto
     }
 
+    // Serviço para buscar apenas as pessoas ativas
+    async pegaPessoasAtivas() {
+        return this.model.findAll({ where: { ativo: true } });
+    }
+
     // Método genérico para buscar todos os registros de um determinado modelo
     async pegaTodosOsRegistros() {
         // Utiliza o Sequelize para buscar todos os registros da tabela correspondente
@@ -45,18 +50,12 @@ class Service {
 
     // Método para atualizar um registro existente
     async atualizaRegistro(dadosAtualizados, where) {
-        // Atualiza o registro onde o ID for correspondente
-        const listadeRegistrosAtualizados = await this.model.update(dadosAtualizados, {
-            where: { ...where }
+        const [numRegistrosAtualizados] = await this.model.update(dadosAtualizados, {
+            where: where, // apenas o `id` será passado como condição
+            paranoid: false // garantir que a atualização ocorra, mesmo em registros soft-deleted
         });
-        
-        // Se nenhum registro for atualizado, retorna falso
-        if (listadeRegistrosAtualizados[0] === 0) {
-            return false;
-        }
-        
-        // Retorna verdadeiro se a atualização for bem-sucedida
-        return true;
+    
+        return numRegistrosAtualizados > 0;
     }
 
     // Método para excluir um registro do banco de dados

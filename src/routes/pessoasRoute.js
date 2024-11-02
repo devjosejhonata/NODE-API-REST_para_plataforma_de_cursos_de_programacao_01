@@ -29,6 +29,14 @@ router.post('/pessoas', (req, res) => pessoaController.criaNovo(req, res));
 // Rota para atualizar um registro de pessoa existente
 router.put('/pessoas/:id', (req, res) => pessoaController.atualiza(req, res));
 
+// Rotas para atualizar o status de um estudante (ativo/inativo) na tabela pessoas
+router.put('/pessoas/:estudante_id/status', (req, res) => pessoaController.alternarStatusEstudante(req, res));
+router.delete('/pessoas/:estudante_id/status', (req, res) => pessoaController.alternarStatusEstudante(req, res));
+
+// Rotas para reativar ou cancelar uma matrícula específica na tabela matriculas
+router.patch('/pessoas/:estudante_id/matriculas/status', (req, res) => pessoaController.alternarStatusMatricula(req, res));
+router.delete('/pessoas/:estudante_id/matriculas/status', (req, res) => pessoaController.alternarStatusMatricula(req, res));
+
 // Rota para excluir um registro de pessoa
 router.delete('/pessoas/:id', (req, res) => pessoaController.exclui(req, res));
 
